@@ -250,7 +250,7 @@ The API supports a powerful filtering syntax for narrowing down job results.
 ### Location Filtering
 
 ```
-/api/jobs?filter=locations IS_ANY (New York,Remote)
+/api/jobs?filter=locations=New York
 ```
 
 ### Experience Level
@@ -266,3 +266,22 @@ The API supports a powerful filtering syntax for narrowing down job results.
 ```
 
 This finds full-time jobs that require PHP or JavaScript, are located in New York or are remote, and require at least 3 years of experience.
+
+## API Documentation
+
+The API documentation is available at the following route:
+
+```
+GET /api-docs
+```
+
+This route displays comprehensive documentation for the Job Listing API, including:
+
+- Detailed explanation of all available endpoints
+- Filter syntax with examples
+- A downloadable Postman collection for testing
+- Quick filter examples for common use cases
+
+The documentation can be accessed via the API Docs link on the welcome page.
+
+## Installation
