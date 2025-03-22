@@ -1,0 +1,769 @@
+{
+	"info": {
+		"_postman_id": "d3f9c5e7-8a1b-48d7-91a6-5e94c64a8f02",
+		"name": "Job Listing API",
+		"description": "A collection of API requests for the Job Listing application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Basic Requests",
+			"item": [
+				{
+					"name": "Get All Jobs",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"]
+						},
+						"description": "Retrieve all published jobs"
+					}
+				},
+				{
+					"name": "Get Job By ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs", "1"]
+						},
+						"description": "Retrieve a specific job by its ID"
+					}
+				},
+				{
+					"name": "Jobs with Pagination",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?per_page=5&page=1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Retrieve jobs with pagination (5 per page)"
+					}
+				}
+			]
+		},
+		{
+			"name": "Status Filters",
+			"item": [
+				{
+					"name": "Published Jobs",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=status=published",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "status=published"
+								}
+							]
+						},
+						"description": "Retrieve only published jobs"
+					}
+				},
+				{
+					"name": "Draft Jobs",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=status=draft",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "status=draft"
+								}
+							]
+						},
+						"description": "Retrieve only draft jobs"
+					}
+				},
+				{
+					"name": "Archived Jobs",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=status=archived",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "status=archived"
+								}
+							]
+						},
+						"description": "Retrieve only archived jobs"
+					}
+				}
+			]
+		},
+		{
+			"name": "Text Filters",
+			"item": [
+				{
+					"name": "Filter by Title (LIKE)",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=title LIKE Developer",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "title LIKE Developer"
+								}
+							]
+						},
+						"description": "Find jobs with 'Developer' in the title"
+					}
+				},
+				{
+					"name": "Filter by Exact Title",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=title=Senior Developer",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "title=Senior Developer"
+								}
+							]
+						},
+						"description": "Find jobs with an exact title match"
+					}
+				},
+				{
+					"name": "Filter by Description (LIKE)",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=description LIKE experience",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "description LIKE experience"
+								}
+							]
+						},
+						"description": "Find jobs with 'experience' in the description"
+					}
+				},
+				{
+					"name": "Filter by Company Name",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=company_name=Google",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "company_name=Google"
+								}
+							]
+						},
+						"description": "Find jobs at a specific company"
+					}
+				}
+			]
+		},
+		{
+			"name": "Numeric Filters",
+			"item": [
+				{
+					"name": "Minimum Salary",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=salary_min>=50000",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "salary_min>=50000"
+								}
+							]
+						},
+						"description": "Find jobs with minimum salary ≥ 50,000"
+					}
+				},
+				{
+					"name": "Maximum Salary",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=salary_max<=100000",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "salary_max<=100000"
+								}
+							]
+						},
+						"description": "Find jobs with maximum salary ≤ 100,000"
+					}
+				},
+				{
+					"name": "Salary Range",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=(salary_min>=50000 AND salary_max<=100000)",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "(salary_min>=50000 AND salary_max<=100000)"
+								}
+							]
+						},
+						"description": "Find jobs within a specific salary range"
+					}
+				}
+			]
+		},
+		{
+			"name": "Boolean Filters",
+			"item": [
+				{
+					"name": "Remote Jobs",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=is_remote=true",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "is_remote=true"
+								}
+							]
+						},
+						"description": "Find remote jobs only"
+					}
+				},
+				{
+					"name": "On-Site Jobs",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=is_remote=false",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "is_remote=false"
+								}
+							]
+						},
+						"description": "Find on-site jobs only"
+					}
+				}
+			]
+		},
+		{
+			"name": "Job Type Filters",
+			"item": [
+				{
+					"name": "Full-Time Jobs",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=job_type=full-time",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "job_type=full-time"
+								}
+							]
+						},
+						"description": "Find full-time jobs only"
+					}
+				},
+				{
+					"name": "Part-Time Jobs",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=job_type=part-time",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "job_type=part-time"
+								}
+							]
+						},
+						"description": "Find part-time jobs only"
+					}
+				},
+				{
+					"name": "Contract Jobs",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=job_type=contract",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "job_type=contract"
+								}
+							]
+						},
+						"description": "Find contract jobs only"
+					}
+				},
+				{
+					"name": "Multiple Job Types (IN)",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=job_type IN (full-time,part-time)",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "job_type IN (full-time,part-time)"
+								}
+							]
+						},
+						"description": "Find jobs that match any of the specified job types"
+					}
+				}
+			]
+		},
+		{
+			"name": "Language Filters",
+			"item": [
+				{
+					"name": "Filter by PHP",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=languages IS_ANY (PHP)",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "languages IS_ANY (PHP)"
+								}
+							]
+						},
+						"description": "Find jobs requiring PHP"
+					}
+				},
+				{
+					"name": "Filter by JavaScript",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=languages IS_ANY (JavaScript)",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "languages IS_ANY (JavaScript)"
+								}
+							]
+						},
+						"description": "Find jobs requiring JavaScript"
+					}
+				},
+				{
+					"name": "Filter by Multiple Languages",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=languages IS_ANY (PHP,JavaScript,Python)",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "languages IS_ANY (PHP,JavaScript,Python)"
+								}
+							]
+						},
+						"description": "Find jobs requiring any of the specified languages"
+					}
+				}
+			]
+		},
+		{
+			"name": "Category Filters",
+			"item": [
+				{
+					"name": "Web Development Jobs",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=categories IS_ANY (Web Development)",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "categories IS_ANY (Web Development)"
+								}
+							]
+						},
+						"description": "Find web development jobs"
+					}
+				},
+				{
+					"name": "Mobile Development Jobs",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=categories IS_ANY (Mobile Development)",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "categories IS_ANY (Mobile Development)"
+								}
+							]
+						},
+						"description": "Find mobile development jobs"
+					}
+				},
+				{
+					"name": "Multiple Categories",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=categories IS_ANY (Web Development,Mobile Development,DevOps)",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "categories IS_ANY (Web Development,Mobile Development,DevOps)"
+								}
+							]
+						},
+						"description": "Find jobs in any of the specified categories"
+					}
+				}
+			]
+		},
+		{
+			"name": "Location Filters",
+			"item": [
+				{
+					"name": "Filter by City",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=locations.city IS_ANY (New York)",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "locations.city IS_ANY (New York)"
+								}
+							]
+						},
+						"description": "Find jobs in New York"
+					}
+				},
+				{
+					"name": "Filter by Multiple Cities",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=locations.city IS_ANY (New York,San Francisco)",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "locations.city IS_ANY (New York,San Francisco)"
+								}
+							]
+						},
+						"description": "Find jobs in New York or San Francisco"
+					}
+				},
+				{
+					"name": "Filter by Country",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=locations.country IS_ANY (USA)",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "locations.country IS_ANY (USA)"
+								}
+							]
+						},
+						"description": "Find jobs in the USA"
+					}
+				},
+				{
+					"name": "Filter by State",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=locations.state IS_ANY (CA)",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "locations.state IS_ANY (CA)"
+								}
+							]
+						},
+						"description": "Find jobs in California"
+					}
+				},
+				{
+					"name": "Remote Locations",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=locations.city IS_ANY (Remote)",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "locations.city IS_ANY (Remote)"
+								}
+							]
+						},
+						"description": "Find remote jobs based on location data"
+					}
+				}
+			]
+		},
+		{
+			"name": "Attribute Filters",
+			"item": [
+				{
+					"name": "Filter by Experience Level",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=attribute:years_experience>=3",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "attribute:years_experience>=3"
+								}
+							]
+						},
+						"description": "Find jobs requiring at least 3 years of experience"
+					}
+				},
+				{
+					"name": "Filter by Education Level",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=attribute:education_level=Master",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "attribute:education_level=Master"
+								}
+							]
+						},
+						"description": "Find jobs requiring a Master's degree"
+					}
+				},
+				{
+					"name": "Filter by Other Attributes",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=attribute:required_certification=AWS",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "attribute:required_certification=AWS"
+								}
+							]
+						},
+						"description": "Find jobs requiring AWS certification"
+					}
+				}
+			]
+		},
+		{
+			"name": "Complex Combined Filters",
+			"item": [
+				{
+					"name": "Remote Full-time Developer Jobs",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=(job_type=full-time AND is_remote=true) AND title LIKE Developer",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "(job_type=full-time AND is_remote=true) AND title LIKE Developer"
+								}
+							]
+						},
+						"description": "Find remote, full-time developer jobs"
+					}
+				},
+				{
+					"name": "Senior PHP/JavaScript Jobs in USA",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=(title LIKE Senior) AND (languages IS_ANY (PHP,JavaScript)) AND locations.country IS_ANY (USA)",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "(title LIKE Senior) AND (languages IS_ANY (PHP,JavaScript)) AND locations.country IS_ANY (USA)"
+								}
+							]
+						},
+						"description": "Find senior PHP or JavaScript jobs in the USA"
+					}
+				},
+				{
+					"name": "High Salary Remote Web Development",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=(salary_min>=80000) AND (is_remote=true) AND categories IS_ANY (Web Development)",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "(salary_min>=80000) AND (is_remote=true) AND categories IS_ANY (Web Development)"
+								}
+							]
+						},
+						"description": "Find high-paying remote web development jobs"
+					}
+				},
+				{
+					"name": "Junior to Mid-level Jobs with Low Experience",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=(NOT title LIKE Senior) AND attribute:years_experience<=2",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "(NOT title LIKE Senior) AND attribute:years_experience<=2"
+								}
+							]
+						},
+						"description": "Find junior to mid-level jobs requiring 2 or fewer years of experience"
+					}
+				},
+				{
+					"name": "High-paying Full-time Python Jobs",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/jobs?filter=(job_type=full-time AND languages IS_ANY (Python)) AND (salary_min>=90000)",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "(job_type=full-time AND languages IS_ANY (Python)) AND (salary_min>=90000)"
+								}
+							]
+						},
+						"description": "Find high-paying, full-time Python jobs"
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string",
+			"description": "Base URL of your local development server"
+		}
+	]
+} 
