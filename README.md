@@ -1,5 +1,31 @@
-
 # Job Listings API
+
+## Installation Guide
+
+To set up the Job Listings API project, follow these steps:
+
+1. Clone the repository
+2. Install dependencies:
+```bash
+composer install
+```
+3. Configure your `.env` file with your database credentials
+4. Run migrations to set up the database:
+```bash
+php artisan migrate
+```
+5. Seed the database with sample data:
+```bash
+php artisan db:seed
+```
+6. Change the queue driver to sync in your `.env` file:
+```
+QUEUE_CONNECTION=sync
+```
+7. Start the development server:
+```bash
+php artisan serve
+```
 
 This API provides endpoints for retrieving and filtering job listings.
 
